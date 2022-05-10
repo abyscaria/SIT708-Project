@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/AndroidStudio/NextCharge/app/src/main/res/drawable/add_ur_ev.xml" value="0.116" />
+        <entry key="..\:/AndroidStudio/NextCharge/app/src/main/res/drawable/charge_history_ico.xml" value="0.116" />
+        <entry key="..\:/AndroidStudio/NextCharge/app/src/main/res/drawable/charge_station_ico.xml" value="0.116" />
+        <entry key="..\:/AndroidStudio/NextCharge/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1115" />
+        <entry key="..\:/AndroidStudio/NextCharge/app/src/main/res/drawable/mnc_logo_background.xml" value="0.116" />
+        <entry key="..\:/AndroidStudio/NextCharge/app/src/main/res/drawable/refuel_ico.xml" value="0.116" />
+        <entry key="..\:/AndroidStudio/NextCharge/app/src/main/res/drawable/trip_history.xml" value="0.116" />
+        <entry key="..\:/AndroidStudio/NextCharge/app/src/main/res/layout/activity_main.xml" value="0.13177083333333334" />
+        <entry key="..\:/AndroidStudio/NextCharge/app/src/main/res/layout/activity_mnc_login.xml" value="0.1" />
+        <entry key="..\:/AndroidStudio/NextCharge/app/src/main/res/layout/activity_next_charge_home.xml" value="0.18177083333333333" />
+        <entry key="..\:/AndroidStudio/NextCharge/app/src/main/res/layout/app_bar_next_charge_home.xml" value="0.14895833333333333" />
+        <entry key="..\:/AndroidStudio/NextCharge/app/src/main/res/layout/content_main.xml" value="0.13177083333333334" />
+        <entry key="..\:/AndroidStudio/NextCharge/app/src/main/res/layout/content_next_charge_home.xml" value="0.23052536231884058" />
+        <entry key="..\:/AndroidStudio/NextCharge/app/src/main/res/layout/fragment_create_account.xml" value="0.2988679352838745" />
+        <entry key="..\:/AndroidStudio/NextCharge/app/src/main/res/layout/fragment_first.xml" value="0.13177083333333334" />
+        <entry key="..\:/AndroidStudio/NextCharge/app/src/main/res/layout/fragment_gallery.xml" value="0.21927083333333333" />
+        <entry key="..\:/AndroidStudio/NextCharge/app/src/main/res/layout/fragment_mnc_home.xml" value="0.13177083333333334" />
+        <entry key="..\:/AndroidStudio/NextCharge/app/src/main/res/layout/fragment_mnc_login.xml" value="0.2988679352838745" />
+        <entry key="..\:/AndroidStudio/NextCharge/app/src/main/res/layout/fragment_mnc_menu.xml" value="0.27395833333333336" />
+        <entry key="..\:/AndroidStudio/NextCharge/app/src/main/res/layout/fragment_second.xml" value="0.13177083333333334" />
+        <entry key="..\:/AndroidStudio/NextCharge/app/src/main/res/layout/fragment_slideshow.xml" value="0.18177083333333333" />
+        <entry key="..\:/AndroidStudio/NextCharge/app/src/main/res/layout/fragment_user_acc_create.xml" value="0.30885416666666665" />
+        <entry key="..\:/AndroidStudio/NextCharge/app/src/main/res/layout/market_info_contents.xml" value="0.18177083333333333" />
+        <entry key="..\:/AndroidStudio/NextCharge/app/src/main/res/layout/nav_header_next_charge_home.xml" value="0.23052536231884058" />
+        <entry key="..\:/AndroidStudio/NextCharge/app/src/main/res/menu/activity_main_drawer.xml" value="0.30885416666666665" />
+        <entry key="..\:/AndroidStudio/NextCharge/app/src/main/res/menu/menu_main.xml" value="0.30885416666666665" />
+        <entry key="..\:/AndroidStudio/NextCharge/app/src/main/res/menu/next_charge_home.xml" value="0.30885416666666665" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

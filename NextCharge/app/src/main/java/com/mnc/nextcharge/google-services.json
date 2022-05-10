@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "406327326545",
+    "firebase_url": "https://mynextc-5a6a5-default-rtdb.firebaseio.com",
+    "project_id": "mynextc-5a6a5",
+    "storage_bucket": "mynextc-5a6a5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:406327326545:android:ff207276f3081340794570",
+        "android_client_info": {
+          "package_name": "com.mnc.nextcharge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "406327326545-qlbkfq08n7rlvs7p5mjlp9jt76pgnrg4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDha44l8xxHY10iPxDFKO2QNQ_gHfhOqhc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "406327326545-qlbkfq08n7rlvs7p5mjlp9jt76pgnrg4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
