@@ -62,4 +62,42 @@
     <string name="breakfast_notification_channel_id" />
     <string name="message_subscribed" />
     <string name="message_subscribe_failed" />
+
+
+    <string name="label_google_sign_in">Firebase + Google Sign In</string>
+    <string name="desc_google_sign_in">Use a Google Sign In credential to authenticate with Firebase.</string>
+
+    <string name="label_facebook_login">Firebase + Facebook Login</string>
+    <string name="desc_facebook_login">Use a Facebook Login credential to authenticate with Firebase.</string>
+
+    <string name="label_emailpassword">Email/Password Authentication</string>
+    <string name="desc_emailpassword">Use an email and password to authenticate with Firebase.</string>
+
+    <string name="label_passwordless">Passwordless Authentication</string>
+    <string name="desc_passwordless">Use only an email to authenticate with Firebase.</string>
+
+    <string name="label_phone_auth">Phone Number Authentication</string>
+    <string name="desc_phone_auth">Use a phone number to authenticate with Firebase.</string>
+
+    <string name="label_anonymous_auth">Anonymous Authentication</string>
+    <string name="desc_anonymous_auth">Sign in anonymously and then later upgrade to a full Firebase Auth user.</string>
+
+    <string name="label_anonymous_sign_in">Anonymous Sign In</string>
+    <string name="label_account_linking">Account Linking</string>
+    <string name="btn_link_account">Link Account</string>
+
+
+    <string name="label_custom_auth">Custom Authentication</string>
+    <string name="desc_custom_auth">Use a custom token signed by your own server to authenticate with Firebase.</string>
+
+    <string name="label_firebase_ui">FirebaseUI Auth</string>
+    <string name="desc_firebase_ui">Use the FirebaseUI-Android library to authenticate with Firebase.</string>
+
+    <string name="label_generic_idp">Generic OAuth</string>
+    <string name="desc_generic_idp">Use a generic OAuth identity provider, like Apple, Microsoft, Yahoo, or Twitter to authenticate with Firebase.</string>
+
+    <string name="label_multi_factor">Multi-Factor Authentication</string>
+    <string name="desc_multi_factor">Use SMS for two-factor authentication. Note: this feature is only available for Cloud Identity Platform.</string>
+    <string name="desc_firebase_lockup" />
+    <string name="emailpassword_title_text" />
 </resources>

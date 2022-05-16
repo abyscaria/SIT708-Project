@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
 
   override fun onCreateOptionsMenu(menu : Menu) : Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.next_charge_home, menu)
+        //menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
 
@@ -55,7 +55,6 @@ class MainActivity : AppCompatActivity() {
         //val navController = findNavController(R.id.nav_host_fragment_content_main)
         val navController = findNavController(R.id.nav_host_fragment)
         //val navController = findNavController(R.id.nav_host_fragment_content_next_charge_home)
-        return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
+        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 }
