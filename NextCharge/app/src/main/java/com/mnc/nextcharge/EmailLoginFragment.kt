@@ -38,13 +38,13 @@ class EmailLoginFragment : BaseFragment() {
         // Buttons
         with (binding) {
             emailSignInButton.setOnClickListener {
-                val email = binding.fieldEmail.text.toString()
-                val password = binding.fieldPassword.text.toString()
+                val email = binding.userEmail.text.toString()
+                val password = binding.userPassword.text.toString()
                 signIn(email, password)
             }
             emailCreateAccountButton.setOnClickListener {
-                val email = binding.fieldEmail.text.toString()
-                val password = binding.fieldPassword.text.toString()
+                val email = binding.userEmail.text.toString()
+                val password = binding.userPassword.text.toString()
                 createAccount(email, password)
             }
             signOutButton.setOnClickListener { signOut() }
@@ -159,7 +159,7 @@ class EmailLoginFragment : BaseFragment() {
                 Toast.makeText(context, "Reload successful!", Toast.LENGTH_SHORT).show()
             } else {
                 Log.e(TAG, "reload", task.exception)
-                Toast.makeText(context, "Failed to reload user.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Failed to reload user....", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -167,30 +167,30 @@ class EmailLoginFragment : BaseFragment() {
     private fun validateForm(): Boolean {
         var valid = true
 
-        val email = binding.fieldEmail.text.toString()
+        val email = binding.userEmail.text.toString()
         if (TextUtils.isEmpty(email)) {
-            binding.fieldEmail.error = "Required."
+            binding.userEmail.error = "Required."
             valid = false
         } else {
-            binding.fieldEmail.error = null
+            binding.userEmail.error = null
         }
 
-        val password = binding.fieldPassword.text.toString()
+        val password = binding.userPassword.text.toString()
         if (TextUtils.isEmpty(password)) {
-            binding.fieldPassword.error = "Required."
+            binding.userPassword.error = "Required."
             valid = false
         } else {
-            binding.fieldPassword.error = null
+            binding.userPassword.error = null
         }
 
         return valid
     }
 
-    private fun updateUI(user: FirebaseUser?) {
+    private fun updateUI(user: FirebaseUser? = null) {
         hideProgressBar()
+
         if (user != null) {
-            binding.status.text = getString(R.string.emailpassword_status_fmt,
-                user.email, user.isEmailVerified)
+            binding.status.text = getString(R.string.emailpassword_status_fmt,user.email,user.isEmailVerified)
             binding.detail.text = getString(R.string.firebase_status_fmt, user.uid)
 
             binding.emailPasswordButtons.visibility = View.GONE
@@ -220,10 +220,10 @@ class EmailLoginFragment : BaseFragment() {
             Log.w(TAG, "multiFactorFailure", e)
             val resolver = e.resolver
             val args = bundleOf(
-                MultiFactorSignInFragment.EXTRA_MFA_RESOLVER to resolver,
-                MultiFactorFragment.RESULT_NEEDS_MFA_SIGN_IN to true
+                //MultiFactorSignInFragment.EXTRA_MFA_RESOLVER to resolver,
+                //MultiFactorFragment.RESULT_NEEDS_MFA_SIGN_IN to true
             )
-            findNavController().navigate(R.id.action_emailpassword_to_mfa, args)
+            //findNavController().navigate(R.id.action_emailpassword_to_mfa, args)
         }
     }
 

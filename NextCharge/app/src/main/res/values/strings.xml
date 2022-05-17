@@ -100,4 +100,14 @@
     <string name="desc_multi_factor">Use SMS for two-factor authentication. Note: this feature is only available for Cloud Identity Platform.</string>
     <string name="desc_firebase_lockup" />
     <string name="emailpassword_title_text" />
+    <string name="signed_out">Signed Out</string>
+    <string name="hint_email">Add email id</string>
+    <string name="hint_password">password hint</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="verify_email">"Very Email ID "</string>
+    <string name="reload">Reload....</string>
+    <string name="auth_failed"> </string>
+    <string name="emailpassword_status_fmt"> </string>
+    <string name="firebase_status_fmt"> </string>
 </resources>

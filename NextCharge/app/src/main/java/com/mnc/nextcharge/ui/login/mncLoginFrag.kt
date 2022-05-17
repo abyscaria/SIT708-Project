@@ -15,9 +15,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.mnc.nextcharge.R
 import com.mnc.nextcharge.databinding.FragmentMncLoginBinding
 
-class mncLoginFrag : Fragment() {
+class mncLoginFrag : Fragment() {}
 
-    private lateinit var tvRedirectSignUp : TextView
+    /*private lateinit var tvRedirectSignUp : TextView
     lateinit var etEmail : EditText
     private lateinit var etPass : EditText
     lateinit var btnLogin : Button
@@ -53,11 +53,11 @@ class mncLoginFrag : Fragment() {
         //  .get(LoginViewModel::class.java)
         // initialising Firebase auth object
         //auth = FirebaseAuth.getInstance()
-        val usernameEditText = binding.userId
-        val passwordEditText = binding.password
-        val loginButton = binding.login
-        val caButton = binding.creataccButton
-        val loadingProgressBar = binding.loading
+        val usernameEditText = binding.userEmail
+        val passwordEditText = binding.userPassword
+        val loginButton = binding.emailSignInButton
+        val caButton = binding.emailCreateAccountButton
+        val loadingProgressBar = binding.progressBar
 
         caButton.setOnClickListener { findNavController().navigate(R.id.action_mncLoginFrag_to_userAccCreateFragment2)}
         //loginButton.setOnClickListener { findNavController().navigate(R.id.action_mncLoginFrag_to_homeFragment) }
@@ -164,4 +164,4 @@ class mncLoginFrag : Fragment() {
 
 
 
-
+*/
