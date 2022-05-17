@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:background="#FCE4EC"
             android:contentDescription="@string/desc_firebase_lockup"
-            tools:srcCompat="@mipmap/mnc_logo_foreground" />
+            tools:srcCompat="@drawable/mnc_logo_foreground" />
 
         <TextView
             android:id="@+id/titleText"
