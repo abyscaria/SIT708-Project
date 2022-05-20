@@ -15,7 +15,7 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 // This property is only valid between onCreateView and
 // onDestroyView.
-private var _binding : FragmentMncMenuBinding? = null
+
 /**
  * A simple [Fragment] subclass.
  * Use the [mncMenuFrag.newInstance] factory method to
@@ -25,6 +25,7 @@ class mncMenuFrag : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1 : String? = null
     private var param2 : String? = null
+    private var _binding : FragmentMncMenuBinding? = null
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!

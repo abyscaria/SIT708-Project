@@ -5,21 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MncHome">
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-
-    <ImageButton
-        android:id="@+id/openHomeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="130dp"
-        android:src="@drawable/ic_baseline_menu_24" />
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/map_fragment"
-        class="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="434dp"
-        android:layout_marginTop="190dp"
-        app:mapId="d2666fe94fa1cfe1" />
-
-</FrameLayout>
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/homeapp_bar"
+                style="@style/Theme.NextCharge.AppBarOverlay"
+                app:navigationIcon="@drawable/ic_baseline_menu_open_24"
+                app:collapseIcon="@drawable/ic_baseline_menu_24"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:title="@string/app_name" />
+        </com.google.android.material.appbar.AppBarLayout>
+    </FrameLayout>

@@ -107,7 +107,8 @@
     <string name="sign_out">Sign Out</string>
     <string name="verify_email">"Very Email ID "</string>
     <string name="reload">Reload....</string>
-    <string name="auth_failed"> </string>
-    <string name="emailpassword_status_fmt"> </string>
-    <string name="firebase_status_fmt"> </string>
+    <string name="auth_failed" />
+    <string name="emailpassword_status_fmt" />
+    <string name="firebase_status_fmt" />
+    <string name="title_activity_next_charge_home_page">NextChargeHomePageActivity</string>
 </resources>

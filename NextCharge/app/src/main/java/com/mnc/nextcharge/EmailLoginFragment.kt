@@ -9,21 +9,29 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.SavedStateHandle
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthMultiFactorException
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.mnc.nextcharge.databinding.ActivityMainBinding
 import com.mnc.nextcharge.databinding.FragmentMncLoginBinding
 
 
 class EmailLoginFragment : BaseFragment() {
-
     private lateinit var auth: FirebaseAuth
-
     private var _binding: FragmentMncLoginBinding? = null
+    private var _bindingM: ActivityMainBinding? = null
     private val binding: FragmentMncLoginBinding
         get() = _binding!!
+    private val bindingM: ActivityMainBinding
+    get() = _bindingM!!
+    //private val userViewModel: UserViewModel by activityViewModels()
+    private lateinit var savedStateHandle: SavedStateHandle
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentMncLoginBinding.inflate(inflater, container, false)
@@ -32,7 +40,8 @@ class EmailLoginFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        savedStateHandle = findNavController().previousBackStackEntry!!.savedStateHandle
+        savedStateHandle.set(LOGIN_SUCCESSFUL, false)
         setProgressBar(binding.progressBar)
 
         // Buttons
@@ -41,6 +50,9 @@ class EmailLoginFragment : BaseFragment() {
                 val email = binding.userEmail.text.toString()
                 val password = binding.userPassword.text.toString()
                 signIn(email, password)
+                val checkusr = auth.currentUser.toString()
+                if(checkusr != null) {
+               findNavController().navigate(R.id.action_emailLoginFragment2_to_nav_home)}
             }
             emailCreateAccountButton.setOnClickListener {
                 val email = binding.userEmail.text.toString()
@@ -59,9 +71,12 @@ class EmailLoginFragment : BaseFragment() {
     public override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = auth.currentUser
-        if(currentUser != null){
-            reload();
+
+        val currentUser = bindingM.userID
+
+       if(currentUser != null){
+       Log.d(TAG, "Onstart.....: during reaload $currentUser")
+           reload()
         }
     }
 
@@ -107,6 +122,8 @@ class EmailLoginFragment : BaseFragment() {
                     Log.d(TAG, "signInWithEmail:success")
                     val user = auth.currentUser
                     updateUI(user)
+                    findNavController().navigate(R.id.action_emailLoginFragment2_to_nav_home)
+
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithEmail:failure", task.exception)
@@ -143,6 +160,9 @@ class EmailLoginFragment : BaseFragment() {
                     Toast.makeText(context,
                         "Verification email sent to ${user.email} ",
                         Toast.LENGTH_SHORT).show()
+                        savedStateHandle.set(LOGIN_SUCCESSFUL, true)
+                        findNavController().popBackStack()
+                    //findNavController().navigate(R.id.action_emailLoginFragment2_to_nav_home)
                 } else {
                     Log.e(TAG, "sendEmailVerification", task.exception)
                     Toast.makeText(context,
@@ -157,6 +177,7 @@ class EmailLoginFragment : BaseFragment() {
             if (task.isSuccessful) {
                 updateUI(auth.currentUser)
                 Toast.makeText(context, "Reload successful!", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.action_emailLoginFragment2_to_nav_home)
             } else {
                 Log.e(TAG, "reload", task.exception)
                 Toast.makeText(context, "Failed to reload user....", Toast.LENGTH_SHORT).show()
@@ -191,7 +212,7 @@ class EmailLoginFragment : BaseFragment() {
 
         if (user != null) {
             binding.status.text = getString(R.string.emailpassword_status_fmt,user.email,user.isEmailVerified)
-            binding.detail.text = getString(R.string.firebase_status_fmt, user.uid)
+            binding.detail.text = user.toString()
 
             binding.emailPasswordButtons.visibility = View.GONE
             binding.emailPasswordFields.visibility = View.GONE
@@ -199,13 +220,15 @@ class EmailLoginFragment : BaseFragment() {
 
             if (user.isEmailVerified) {
                 binding.verifyEmailButton.visibility = View.GONE
+                findNavController().navigate(R.id.action_emailLoginFragment2_to_nav_home)
             } else {
                 binding.verifyEmailButton.visibility = View.VISIBLE
+                binding.signOutButton.visibility = View.GONE
             }
         } else {
             binding.status.setText(R.string.signed_out)
             binding.detail.text = null
-
+            binding.icon.visibility = View.VISIBLE
             binding.emailPasswordButtons.visibility = View.VISIBLE
             binding.emailPasswordFields.visibility = View.VISIBLE
             binding.signedInButtons.visibility = View.GONE
@@ -227,13 +250,14 @@ class EmailLoginFragment : BaseFragment() {
         }
     }
 
-    override fun onDestroyView() {
+    /*override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
+    }*/
 
     companion object {
         private const val TAG = "EmailPassword"
         private const val RC_MULTI_FACTOR = 9005
+        const val LOGIN_SUCCESSFUL: String = "LOGIN_SUCCESSFUL"
     }
 }
