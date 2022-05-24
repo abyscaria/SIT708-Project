@@ -3,36 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
-
+    app:startDestination="@id/homeFragment">
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.mnc.nextcharge.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:id="@+id/homeFragment"
+        android:name="com.mnc.nextcharge.HomeFragment"
+        android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_nav_home_to_emailLoginFragment2"
-            app:destination="@id/emailLoginFragment2" />
+            android:id="@+id/action_homeFragment_to_nextChargeLoginFragment"
+            app:destination="@id/nextChargeLoginFragment" />
     </fragment>
-
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.mnc.nextcharge.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
+        android:id="@+id/galleryFragment"
+        android:name="com.mnc.nextcharge.GalleryFragment"
+        android:label="fragment_gallery"
         tools:layout="@layout/fragment_gallery" />
-
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.mnc.nextcharge.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
+        android:id="@+id/slideshowFragment"
+        android:name="com.mnc.nextcharge.SlideshowFragment"
+        android:label="fragment_slideshow"
         tools:layout="@layout/fragment_slideshow" />
     <fragment
-        android:id="@+id/emailLoginFragment2"
-        android:name="com.mnc.nextcharge.EmailLoginFragment"
+        android:id="@+id/nextChargeLoginFragment"
+        android:name="com.mnc.nextcharge.NextChargeLoginFragment"
         android:label="fragment_mnc_login"
         tools:layout="@layout/fragment_mnc_login" >
         <action
-            android:id="@+id/action_emailLoginFragment2_to_nav_home"
-            app:destination="@id/nav_home" />
+            android:id="@+id/action_nextChargeLoginFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

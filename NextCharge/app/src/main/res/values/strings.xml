@@ -111,4 +111,6 @@
     <string name="emailpassword_status_fmt" />
     <string name="firebase_status_fmt" />
     <string name="title_activity_next_charge_home_page">NextChargeHomePageActivity</string>
+    <string name="button_send">Send</string>
+    <string name="edit_message" />
 </resources>

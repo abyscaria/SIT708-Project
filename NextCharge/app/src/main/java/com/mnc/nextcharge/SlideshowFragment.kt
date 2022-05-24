@@ -1,4 +1,4 @@
-package com.mnc.nextcharge.ui.slideshow
+package com.mnc.nextcharge
 
 import android.os.Bundle
 import android.view.LayoutInflater

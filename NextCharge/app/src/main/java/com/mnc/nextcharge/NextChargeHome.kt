@@ -2,6 +2,8 @@ package com.mnc.nextcharge
 
 import android.os.Bundle
 import android.view.Menu
+import android.widget.TextView
+import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -11,31 +13,33 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.auth.FirebaseAuth
-import com.mnc.nextcharge.databinding.ActivityNextChargeHomePageBinding
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
+import com.mnc.nextcharge.databinding.ActivityNextChargeHomeBinding
 
-class NextChargeHomePageActivity : AppCompatActivity() {
+class NextChargeHome : AppCompatActivity() {
 
     private lateinit var appBarConfiguration : AppBarConfiguration
-    private lateinit var binding : ActivityNextChargeHomePageBinding
-    private lateinit var auth : FirebaseAuth
-
+    private lateinit var binding : ActivityNextChargeHomeBinding
+    //private val currentUserViewModel: HomeViewModel by activityViewModels()
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-        binding = ActivityNextChargeHomePageBinding.inflate(layoutInflater)
+        binding = ActivityNextChargeHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        //val currentUserViewModel =  ViewModelProvider(this).get(HomeViewModel::class.java)
+        //val currentUserVM: HomeViewModel by activityViewModels()
+        setSupportActionBar(binding.appBarNextChargeHome.toolbar)
 
-        setSupportActionBar(binding.appBarNextChargeHomePage.toolbar)
+        val navController = findNavController(R.id.nav_host_fragment_content_next_charge_home)
 
-        binding.appBarNextChargeHomePage.fab.setOnClickListener { view ->
+        binding.appBarNextChargeHome.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
         val drawerLayout : DrawerLayout = binding.drawerLayout
         val navView : NavigationView = binding.navView
-        val navController = findNavController(R.id.nav_host_fragment_content_next_charge_home_page)
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
@@ -45,31 +49,24 @@ class NextChargeHomePageActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-        val currentUser = auth.currentUser
-        if (currentUser != null) {
-            binding.appBarNextChargeHomePage.logedInUser.text = currentUser.toString()
-        } else {  binding.appBarNextChargeHomePage.logedInUser.text = "Not logged in Currently" }
+
+        /*if(currentUserViewModel.hasNoUserSet()) {
+         val toast = Toast.makeText(this,"No user  must Login",Toast.LENGTH_SHORT).show()
+        //navController.navigate(R.id.nextChargeLoginFragment2)
+        } else {
+            val toast = Toast.makeText(this,"Navigate to Home page ",Toast.LENGTH_SHORT).show()
+        }*/
 
     }
 
     override fun onCreateOptionsMenu(menu : Menu) : Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.next_charge_home_page, menu)
+        menuInflater.inflate(R.menu.next_charge_home, menu)
         return true
     }
 
     override fun onSupportNavigateUp() : Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_next_charge_home_page)
+        val navController = findNavController(R.id.nav_host_fragment_content_next_charge_home)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
-
-    public override fun onStart() {
-        //val checkLogin : EmailLoginFragment()
-        super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = auth.currentUser
-        if (currentUser != null) {
-            binding.appBarNextChargeHomePage.logedInUser.text = currentUser.toString()
-        } else {  binding.appBarNextChargeHomePage.logedInUser.text = "Not logged in Currently" }
-        }
-    }
+}
