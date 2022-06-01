@@ -16,5 +16,17 @@
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_slideshow" />
+        <item
+            android:id="@+id/nav_plantrip"
+            android:icon="@drawable/refuel_ico"
+            android:title="@string/menu_plantrip" />
+        <item
+            android:id="@+id/nav_chagestation"
+            android:icon="@drawable/charge_station_ico"
+            android:title="@string/menu_chargestaton" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_logout"
+            android:title="@string/logout" />
     </group>
 </menu>

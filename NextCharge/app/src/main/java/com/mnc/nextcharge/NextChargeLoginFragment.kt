@@ -1,55 +1,59 @@
 package com.mnc.nextcharge
 
-import android.R.string
+
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.SavedStateHandle
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthMultiFactorException
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.mnc.nextcharge.databinding.ActivityMainBinding
 import com.mnc.nextcharge.databinding.FragmentMncLoginBinding
 
 
 class NextChargeLoginFragment : BaseFragment() {
-    private lateinit var auth: FirebaseAuth
-    private var _binding: FragmentMncLoginBinding? = null
+    private lateinit var auth : FirebaseAuth
+    private var _binding : FragmentMncLoginBinding? = null
+
     //private var _bindingM: ActivityMainBinding? = null
-    private val binding: FragmentMncLoginBinding
+    private val binding : FragmentMncLoginBinding
         get() = _binding!!
 
-    private lateinit var savedStateHandle: SavedStateHandle
-    private val currentUserViewModel: HomeViewModel by activityViewModels()
+    private lateinit var savedStateHandle : SavedStateHandle
+    private val currentUserViewModel : HomeViewModel by activityViewModels()
     //val navController = findNavController()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater : LayoutInflater,
+        container : ViewGroup?,
+        savedInstanceState : Bundle?
+    ) : View? {
         _binding = FragmentMncLoginBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view : View, savedInstanceState : Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         savedStateHandle = findNavController().previousBackStackEntry!!.savedStateHandle
         savedStateHandle.set(LOGIN_SUCCESSFUL, false)
-       // setProgressBar(binding.progressBar)
+        setProgressBar(binding.progressBar)
 
         // Buttons
-        with (binding) {
+        with(binding) {
             emailSignInButton.setOnClickListener {
                 val email = binding.userEmail.text.toString()
                 val password = binding.userPassword.text.toString()
+                Log.w(TAG, "on email signin button before reset UVM - NextCharge Login ")
+                currentUserViewModel.resetUser()
                 signIn(email, password)
             }
             emailCreateAccountButton.setOnClickListener {
@@ -66,17 +70,17 @@ class NextChargeLoginFragment : BaseFragment() {
         auth = Firebase.auth
     }
 
-   /* public override fun onStart() {
-        super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
-              Log.d(TAG, "Onstart.....: during reaload ${auth.currentUser}")
-        //findNavController().navigate(R.id.action_nextChargeLoginFragment2_to_nav_home)
-          // reload()
-        }*/
+    /* public override fun onStart() {
+         super.onStart()
+         // Check if user is signed in (non-null) and update UI accordingly.
+               Log.d(TAG, "Onstart.....: during reaload ${auth.currentUser}")
+         //findNavController().navigate(R.id.action_nextChargeLoginFragment2_to_nav_home)
+           // reload()
+         }*/
 
 
-    private fun createAccount(email: String, password: String) {
-        //savedStateHandle = findNavController().previousBackStackEntry!!.savedStateHandle
+    private fun createAccount(email : String, password : String) {
+        savedStateHandle = findNavController().previousBackStackEntry!!.savedStateHandle
 
 
         Log.d(TAG, "createAccount:$email")
@@ -93,11 +97,13 @@ class NextChargeLoginFragment : BaseFragment() {
                     Log.d(TAG, "createUserWithEmail:success")
                     val user = auth.currentUser
                     updateUI(user)
-                    } else {
+                } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(context, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        context, "Authentication failed.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     updateUI(null)
                 }
 
@@ -105,46 +111,50 @@ class NextChargeLoginFragment : BaseFragment() {
             }
     }
 
-    private fun signIn(email: String, password: String) {
+    private fun signIn(email : String, password : String) {
         Log.d(TAG, "signIn >>:$email")
         if (!validateForm()) {
             return
         }
 
-        //showProgressBar()
+        showProgressBar()
 
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
 
-                    val user  = auth.currentUser
+                    val user = auth.currentUser
 
                     Log.d(TAG, "signInWithEmail:success $email")
+                    currentUserViewModel.setUser(email)
+                    Log.d(TAG, " Firebase user 11>> $user")
                     if (currentUserViewModel.hasNoUserSet()) {
-                        currentUserViewModel.setUser(user.toString())
                         savedStateHandle.set(LOGIN_SUCCESSFUL, true)
                         findNavController().popBackStack()
+                        Log.d(TAG, " Firebase user 22>> $user")
                     }
                     updateUI(user)
-                   //findNavController().navigate(R.id.action_nextChargeLoginFragment2_to_nav_home) //}
+                    //findNavController().navigate(R.id.action_nextChargeLoginFragment2_to_nav_home) //}
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithEmail:failure", task.exception)
-                    Toast.makeText(context, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        context, "Authentication failed.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     updateUI(null)
                     checkForMultiFactorFailure(task.exception!!)
                 }
 
                 if (!task.isSuccessful) {
-                    binding.status.setText(R.string.auth_failed)
+                    //binding.status.setText(R.string.auth_failed)
                 }
                 hideProgressBar()
             }
     }
 
-    private fun signOut() {
+    fun signOut() {
         auth.signOut()
         updateUI(null)
     }
@@ -160,16 +170,20 @@ class NextChargeLoginFragment : BaseFragment() {
                 // Re-enable button
                 binding.verifyEmailButton.isEnabled = true
                 if (task.isSuccessful) {
-                    Toast.makeText(context,
+                    Toast.makeText(
+                        context,
                         "Verification email sent to ${user.email} ",
-                        Toast.LENGTH_SHORT).show()
-                        savedStateHandle.set(LOGIN_SUCCESSFUL, true)
-                        findNavController().popBackStack()
-                       } else {
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    savedStateHandle.set(LOGIN_SUCCESSFUL, true)
+                    findNavController().popBackStack()
+                } else {
                     Log.e(TAG, "sendEmailVerification", task.exception)
-                    Toast.makeText(context,
+                    Toast.makeText(
+                        context,
                         "Failed to send verification email.",
-                        Toast.LENGTH_SHORT).show()
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
     }
@@ -178,7 +192,11 @@ class NextChargeLoginFragment : BaseFragment() {
         auth.currentUser!!.reload().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 updateUI(auth.currentUser)
-                Toast.makeText(context, "Reload successful! ${auth.currentUser}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    context,
+                    "Reload successful! ${auth.currentUser}",
+                    Toast.LENGTH_SHORT
+                ).show()
                 //findNavController().navigate(R.id.action_emailLoginFragment2_to_nav_home)
             } else {
                 Log.e(TAG, "reload", task.exception)
@@ -187,7 +205,7 @@ class NextChargeLoginFragment : BaseFragment() {
         }
     }
 
-    private fun validateForm(): Boolean {
+    private fun validateForm() : Boolean {
         var valid = true
 
         val email = binding.userEmail.text.toString()
@@ -209,11 +227,11 @@ class NextChargeLoginFragment : BaseFragment() {
         return valid
     }
 
-    private fun updateUI(user: FirebaseUser? = null) {
+    private fun updateUI(user : FirebaseUser? = null) {
         hideProgressBar()
 
         if (user != null) {
-            ///binding.status.text = "${getString(R.string.emailpassword_status_fmt,user.email,user.isEmailVerified)}"
+            binding.status.text = user.email
             binding.detail.text = user.toString()
 
             binding.emailPasswordButtons.visibility = View.GONE
@@ -222,21 +240,17 @@ class NextChargeLoginFragment : BaseFragment() {
 
             if (user.isEmailVerified) {
                 binding.verifyEmailButton.visibility = View.GONE
-                //findNavController().navigate(R.id.action_emailLoginFragment2_to_nav_home)
-                currentUserViewModel.userEmail.observe(viewLifecycleOwner) { userEmail ->
-                    if (currentUserViewModel.hasNoUserSet()) {
-                        currentUserViewModel.setUser(user.toString())
-                        findNavController().popBackStack()
-                        findNavController().navigate(R.id.nav_home)
-                    }
+                if (!currentUserViewModel.hasNoUserSet()) {
+                    currentUserViewModel.setUser(user.toString())
+                    findNavController().popBackStack()
                 }
             } else {
                 binding.verifyEmailButton.visibility = View.VISIBLE
                 binding.signOutButton.visibility = View.GONE
-               }
+            }
         } else {
-            binding.status.setText(R.string.signed_out)
-            binding.detail.text = null
+            //binding.status.setText(R.string.signed_out)
+            //binding.detail.text = null
             binding.icon.visibility = View.VISIBLE
             binding.emailPasswordButtons.visibility = View.VISIBLE
             binding.emailPasswordFields.visibility = View.VISIBLE
@@ -244,7 +258,7 @@ class NextChargeLoginFragment : BaseFragment() {
         }
     }
 
-    private fun checkForMultiFactorFailure(e: Exception) {
+    private fun checkForMultiFactorFailure(e : Exception) {
         // Multi-factor authentication with SMS is currently only available for
         // Google Cloud Identity Platform projects. For more information:
         // https://cloud.google.com/identity-platform/docs/android/mfa
@@ -259,14 +273,15 @@ class NextChargeLoginFragment : BaseFragment() {
         }
     }
 
-    /*override fun onDestroyView() {
+    override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }*/
+        //signOut()
+    }
 
     companion object {
         private const val TAG = "NextChargeLoginFragment"
         private const val RC_MULTI_FACTOR = 9005
-        const val LOGIN_SUCCESSFUL: String = "LOGIN_SUCCESSFUL"
+        const val LOGIN_SUCCESSFUL : String = "LOGIN_SUCCESSFUL"
     }
 }

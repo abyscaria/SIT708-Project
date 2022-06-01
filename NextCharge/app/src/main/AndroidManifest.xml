@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NextCharge">
         <activity
+            android:name=".LoginMNC"
+            android:exported="false" />
+        <activity
             android:name=".NextChargeHome"
             android:exported="true"
             android:label="@string/title_activity_next_charge_home"
@@ -20,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-         <activity
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.NextCharge.NoActionBar">

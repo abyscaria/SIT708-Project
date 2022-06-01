@@ -3,33 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/nav_home">
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/nav_home"
         android:name="com.mnc.nextcharge.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_homeFragment_to_nextChargeLoginFragment"
-            app:destination="@id/nextChargeLoginFragment" />
-    </fragment>
+        android:label="Home"
+        tools:layout="@layout/fragment_home" />
     <fragment
-        android:id="@+id/galleryFragment"
+        android:id="@+id/nav_gallery"
         android:name="com.mnc.nextcharge.GalleryFragment"
-        android:label="fragment_gallery"
+        android:label="Gallery"
         tools:layout="@layout/fragment_gallery" />
     <fragment
-        android:id="@+id/slideshowFragment"
+        android:id="@+id/nav_slideshow"
         android:name="com.mnc.nextcharge.SlideshowFragment"
-        android:label="fragment_slideshow"
+        android:label="Slideshow"
         tools:layout="@layout/fragment_slideshow" />
     <fragment
         android:id="@+id/nextChargeLoginFragment"
         android:name="com.mnc.nextcharge.NextChargeLoginFragment"
-        android:label="fragment_mnc_login"
-        tools:layout="@layout/fragment_mnc_login" >
-        <action
-            android:id="@+id/action_nextChargeLoginFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
+        android:label="Login Page"
+        tools:layout="@layout/fragment_mnc_login"/>
+    <fragment
+        android:id="@+id/nav_plantrip"
+        android:name="com.mnc.nextcharge.PlanTripFragment"
+        android:label="Plan the Trip"
+        tools:layout="@layout/fragment_plantrip" />
+    <fragment
+        android:id="@+id/nav_logout"
+        android:name="com.mnc.nextcharge.logout"
+        android:label="Logout"
+        tools:layout="@layout/fragment_logout" />
 </navigation>
