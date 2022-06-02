@@ -1,5 +1,7 @@
 package com.mnc.nextcharge
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,12 +19,13 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 
-class logout : Fragment(){
-     private lateinit var auth : FirebaseAuth
-    private var binding : FragmentLogoutBinding? = null
-        override fun onCreate(savedInstanceState : Bundle?) {
-        super.onCreate(savedInstanceState)
+class logout : Fragment() {
+    private lateinit var auth : FirebaseAuth
+    private var thiscontext : Context? = null
 
+    private var binding : FragmentLogoutBinding? = null
+    override fun onCreate(savedInstanceState : Bundle?) {
+        super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(
@@ -31,26 +34,28 @@ class logout : Fragment(){
     ) : View? {
         binding = FragmentLogoutBinding.inflate(inflater, container, false)
         auth = Firebase.auth
+        thiscontext = container?.getContext();
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_logout, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view : View, savedInstanceState : Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-    signOut()
-    //binding!!.logoutbutton.setOnClickListener{signIn()}
-
+        signOut()
+        val intent = Intent(thiscontext, SignInActivity::class.java).apply {}
+        startActivity(intent)
     }
 
-    private fun signIn()
-    {findNavController().navigate(R.id.nextChargeLoginFragment)}
+
+    private fun signIn() {
+        findNavController().navigate(R.id.nextChargeLoginFragment)
+    }
 
     private fun signOut() {
-     auth.signOut()
+        auth.signOut()
     }
 
     companion object {
-    // nothing
+        // nothing
     }
 }

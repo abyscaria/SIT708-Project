@@ -12,11 +12,11 @@ import com.google.firebase.ktx.Firebase
 class UserAccountActivity : Activity() {
 
     // [START declare_auth]
-    private lateinit var auth: FirebaseAuth
+    private lateinit var auth : FirebaseAuth
     // [END declare_auth]
 
 
-    public override fun onCreate(savedInstanceState: Bundle?) {
+    public override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
 
         // [START initialize_auth]
@@ -30,13 +30,13 @@ class UserAccountActivity : Activity() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
-        if(currentUser != null){
+        if (currentUser != null) {
             reload();
         }
     }
     // [END on_start_check_user]
 
-    private fun createAccount(email: String, password: String) {
+    private fun createAccount(email : String, password : String) {
         // [START create_user_with_email]
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
@@ -48,15 +48,17 @@ class UserAccountActivity : Activity() {
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        baseContext, "Authentication failed.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     updateUI(null)
                 }
             }
         // [END create_user_with_email]
     }
 
-    private fun signIn(email: String, password: String) {
+    private fun signIn(email : String, password : String) {
         // [START sign_in_with_email]
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
@@ -68,8 +70,10 @@ class UserAccountActivity : Activity() {
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        baseContext, "Authentication failed.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     updateUI(null)
                 }
             }
@@ -86,7 +90,7 @@ class UserAccountActivity : Activity() {
         // [END send_email_verification]
     }
 
-    private fun updateUI(user: FirebaseUser?) {
+    private fun updateUI(user : FirebaseUser?) {
 
     }
 
@@ -97,3 +101,4 @@ class UserAccountActivity : Activity() {
     companion object {
         private const val TAG = "EmailPassword"
     }
+}

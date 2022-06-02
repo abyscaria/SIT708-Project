@@ -30,7 +30,7 @@
                     android:id="@+id/startLoc_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/label_startLoc"/>
+                    android:hint="@string/label_startLoc" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -44,7 +44,7 @@
                     android:id="@+id/endLoc_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/label_endLoc"/>
+                    android:hint="@string/label_endLoc" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -67,19 +67,16 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/myEV_text_input"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                <Spinner
+                    android:id="@+id/myEV_edit_text"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:errorEnabled="true">
+                    android:layout_height="48dp"
+                    android:backgroundTint="#9575CD"
+                    android:backgroundTintMode="screen"
+                    android:foregroundTint="#FFB74D"
+                    android:foregroundTintMode="screen"
+                    android:hint="@string/label_myEV" />
 
-                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                        android:id="@+id/myEV_edit_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/label_myEV"/>
-                </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
@@ -93,16 +90,16 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="309dp"
                 android:orientation="vertical">
 
                 <ListView
                     android:id="@+id/cStationRV"
                     android:layout_width="372dp"
-                    android:layout_height="203dp"
-                    android:padding="0dp"
+                    android:layout_height="match_parent"
                     android:divider="@null"
-                    android:dividerHeight="0dp"/>
+                    android:dividerHeight="0dp"
+                    android:padding="0dp" />
             </LinearLayout>
         </LinearLayout>
 

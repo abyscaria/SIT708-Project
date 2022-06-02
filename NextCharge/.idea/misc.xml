@@ -52,6 +52,7 @@
         <entry key="..\:/NextCharge/SIT708-Project/NextCharge/app/src/main/res/layout/activity_main.xml" value="0.2833333333333333" />
         <entry key="..\:/NextCharge/SIT708-Project/NextCharge/app/src/main/res/layout/activity_next_charge_home.xml" value="0.2264151024877837" />
         <entry key="..\:/NextCharge/SIT708-Project/NextCharge/app/src/main/res/layout/activity_next_charge_home_page.xml" value="0.4528302049755674" />
+        <entry key="..\:/NextCharge/SIT708-Project/NextCharge/app/src/main/res/layout/activity_sign_in.xml" value="0.16301887379120425" />
         <entry key="..\:/NextCharge/SIT708-Project/NextCharge/app/src/main/res/layout/app_bar_next_charge_home.xml" value="0.2833333333333333" />
         <entry key="..\:/NextCharge/SIT708-Project/NextCharge/app/src/main/res/layout/app_bar_next_charge_home_page.xml" value="0.2125" />
         <entry key="..\:/NextCharge/SIT708-Project/NextCharge/app/src/main/res/layout/content_login_mnc.xml" value="0.175" />
@@ -77,11 +78,13 @@
         <entry key="..\:/NextCharge/SIT708-Project/NextCharge/app/src/main/res/layout/fragment_slideshow.xml" value="0.13779128672745694" />
         <entry key="..\:/NextCharge/SIT708-Project/NextCharge/app/src/main/res/layout/fragment_user_acc_create.xml" value="0.13779128672745694" />
         <entry key="..\:/NextCharge/SIT708-Project/NextCharge/app/src/main/res/layout/item_custom_row.xml" value="0.19924529018924966" />
+        <entry key="..\:/NextCharge/SIT708-Project/NextCharge/app/src/main/res/layout/map_info_contents.xml" value="0.1" />
         <entry key="..\:/NextCharge/SIT708-Project/NextCharge/app/src/main/res/layout/nav_header_main.xml" value="0.14114583333333333" />
         <entry key="..\:/NextCharge/SIT708-Project/NextCharge/app/src/main/res/layout/nav_header_next_charge_home.xml" value="0.1" />
         <entry key="..\:/NextCharge/SIT708-Project/NextCharge/app/src/main/res/layout/nav_header_next_charge_home_page.xml" value="0.2125" />
         <entry key="..\:/NextCharge/SIT708-Project/NextCharge/app/src/main/res/menu/activity_home_page_drawer.xml" value="0.2125" />
         <entry key="..\:/NextCharge/SIT708-Project/NextCharge/app/src/main/res/menu/activity_main_drawer.xml" value="0.1" />
+        <entry key="..\:/NextCharge/SIT708-Project/NextCharge/app/src/main/res/menu/current_place_menu.xml" value="0.10723684210526316" />
         <entry key="..\:/NextCharge/SIT708-Project/NextCharge/app/src/main/res/menu/menu_main.xml" value="0.1" />
         <entry key="..\:/NextCharge/SIT708-Project/NextCharge/app/src/main/res/menu/next_charge_home.xml" value="0.1" />
         <entry key="..\:/NextCharge/SIT708-Project/NextCharge/app/src/main/res/menu/next_charge_home_page.xml" value="0.2125" />
