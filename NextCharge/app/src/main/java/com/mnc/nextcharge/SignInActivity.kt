@@ -34,6 +34,7 @@ class SignInActivity : AppCompatActivity() {
         binding.multiButton.visibility = View.VISIBLE
         binding.multiButton.text = getString(R.string.login_button_text)
         binding.loginstatus.text = getString(R.string.prelogin_status)
+        binding.reqCreatAcc.visibility = View.VISIBLE
 
 
         Log.i(TAG, "on Signin actvity before auth initiallize >>#1 ")
@@ -41,23 +42,17 @@ class SignInActivity : AppCompatActivity() {
         binding.multiButton.setOnClickListener {
             val userEmail : String = binding.emailEditText.text.toString()
             val password : String = binding.passwordEditText.text.toString()
+            if(validateForm()) {
+                if (sinorlog == "LOGIN") {
+                    Log.i(TAG, "on Signin actvity before auth initiallize >>#2 " + sinorlog)
+                    signIn(userEmail, password)
+                }
 
-            if (sinorlog == "LOGIN") {
-                Log.i(TAG, "on Signin actvity before auth initiallize >>#2 " + sinorlog)
-                signIn(userEmail, password)
+                if (sinorlog == "CREATE ACCOUNT") {
+                    Log.i(TAG, "on Signin actvity before auth initiallize >>#3 " + sinorlog)
+                    createAccount(userEmail, password)
+                }
             }
-
-            if (sinorlog == "CREATE ACCOUNT") {
-                Log.i(TAG, "on Signin actvity before auth initiallize >>#3 " + sinorlog)
-                createAccount(userEmail, password)
-            }
-
-            if (sinorlog == "VERIFY EMAIL") {
-                Log.i(TAG, "on Signin actvity before auth initiallize >>#3 " + sinorlog)
-                sendEmailVerification()
-            }
-
-
         }
         binding.reqCreatAcc.setOnClickListener {
             binding.multiButton.visibility = View.VISIBLE
@@ -93,17 +88,21 @@ class SignInActivity : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "createUserWithEmail:success")
                     val user = auth.currentUser
-                    binding.loginstatus.text = "Sucessfully Created - User Account"
-                    sinorlog = getString(R.string.verify_button_text)
-                    updateUI(user)
+                    binding.loginstatus.text = "Successfully Created - User Account. Login to continue"
+                    binding.emailEditText.text = null
+                    binding.passwordEditText.text =null
+                    sinorlog = getString(R.string.login_button_text)
+                    binding.multiButton.text = getString(R.string.login_button_text)
+                    //updateUI(user)
                 } else {
                     // If sign in fails, display a message to the user.
-                    Log.w(TAG, "createUserWithEmail:failure", task.exception)
+                    Log.i(TAG, "createUserWithEmail:failure >> "+task.exception)
                     Toast.makeText(
                         baseContext, "Create Account Failed....",
                         Toast.LENGTH_SHORT
                     ).show()
-                    binding.loginstatus.text = task.exception.toString()
+                    val lenex =  task.exception.toString().length
+                    binding.loginstatus.text = task.exception.toString().substring(25,lenex)
                     updateUI(null)
                 }
             }
@@ -121,7 +120,7 @@ class SignInActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "signInWithEmail:success")
+                    Log.d(TAG, "signInWithEmail:success >>"+auth.currentUser!!.email)
                     val user = auth.currentUser
                     //updateUI(user)
                     val intent = Intent(this, NextChargeHome::class.java).apply {}
@@ -130,13 +129,13 @@ class SignInActivity : AppCompatActivity() {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithEmail:failure", task.exception)
                     binding.loginstatus.text = getString(R.string.login_failure)
-                    Toast.makeText(
+                    /*Toast.makeText(
                         baseContext, "Authentication failed.",
                         Toast.LENGTH_SHORT
-                    ).show()
+                    ).show()*/
                     binding.reqCreatAcc.text = getString(R.string.sinupOption_text)
                     binding.reqCreatAcc.visibility = View.VISIBLE
-                    updateUI(null)
+                    //updateUI(null)
                 }
             }
         // [END sign_in_with_email]
@@ -200,7 +199,7 @@ class SignInActivity : AppCompatActivity() {
 
         val email = binding.emailEditText.text.toString()
         if (TextUtils.isEmpty(email)) {
-            binding.emailEditText.error = "Required."
+            binding.emailEditText.error = "Email ID required!!"
             valid = false
         } else {
             binding.emailEditText.error = null
@@ -208,15 +207,24 @@ class SignInActivity : AppCompatActivity() {
 
         val password = binding.passwordEditText.text.toString()
         if (TextUtils.isEmpty(password)) {
-            binding.passwordEditText.error = "Required."
+            binding.passwordEditText.error = "Password Required!!"
             valid = false
         } else {
             binding.passwordEditText.error = null
         }
 
+        if(sinorlog == getString(R.string.signup_button_text)) {
+            if (password.length < 8) {
+                binding.loginstatus.text = getString(R.string.password_len_text)
+                binding.passwordEditText.error = "Error"
+                valid = false
+            } else {
+                binding.passwordEditText.error = null
+            }
+        }
+
         return valid
     }
-
 
     companion object {
         private const val TAG = "SignInActivity"

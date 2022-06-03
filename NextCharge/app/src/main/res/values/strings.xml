@@ -54,7 +54,10 @@
     <string name="edit_message" />
     <string name="button_send">SEND</string>
     <string name="menu_plantrip">Plan a Trip</string>
-    <string name="menu_chargestaton">Charge Station Profile</string>
+    <string name="menu_chargestaton">Charge Station Details</string>
+    <string name="menu_addev">Add Your EV</string>
+    <string name="menu_triphist">Trip History</string>
+    <string name="menu_chargehist">Charge History</string>
     <string name="hintlable">Label</string>
 
     <string name="starDLabel">Start Location</string>
@@ -79,7 +82,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="logout">Press Logout to Close the app</string>
+    <string name="logout">Logout</string>
 
 
     <string name="label_name">Name</string>
@@ -109,13 +112,15 @@
     <string name="label_email">Enter User ID</string>
     <string name="label_pwd">Enter Password</string>
     <string name="login_button_text">LOGIN</string>
-    <string name="prelogin_status">Sign-up or Lgin to Continue…!!</string>
+    <string name="prelogin_status">Sign-up or Login to Continue…!!</string>
     <string name="label_welcome">Welcome to MyNextCharge</string>
     <string name="login_failure">Login failed check your credentials or Create account</string>
     <string name="signup_button_text">"CREATE ACCOUNT"</string>
-    <string name="sinupOption_text">Touch to enable Create Account</string>
+    <string name="sinupOption_text">Touch here for Sign-Up</string>
     <string name="verify_button_text">VERIFY EMAIL</string>
     <string name="verify_emailsend">Press Verify Button to send verification email</string>
+    <string name="password_len_text">Password must be 8 or more characters long!!</string>
+    <string name="nav_mnc_hedertitle">MyNextCharge</string>
 
 
 </resources>

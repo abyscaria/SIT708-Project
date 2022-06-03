@@ -94,11 +94,11 @@
                 android:orientation="vertical">
 
                 <ListView
-                    android:id="@+id/cStationRV"
+                    android:id="@+id/cStationLV"
                     android:layout_width="372dp"
                     android:layout_height="match_parent"
-                    android:divider="@null"
-                    android:dividerHeight="0dp"
+                    android:divider="@drawable/ic_outline_divider"
+                    android:dividerHeight="1dp"
                     android:padding="0dp" />
             </LinearLayout>
         </LinearLayout>

@@ -42,9 +42,11 @@
         android:layout_width="match_parent"
         android:layout_height="452dp"
         android:contentDescription="@string/title_activity_mnc_trip_map"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_home" />
+        app:layout_constraintTop_toBottomOf="@+id/text_home"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,7 +17,8 @@
         app:layout_constraintBottom_toTopOf="@+id/reqCreatAcc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome_text">
+        app:layout_constraintTop_toBottomOf="@+id/welcome_text"
+        app:layout_constraintVertical_bias="0.762">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -93,21 +94,22 @@
         android:id="@+id/welcome_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="52dp"
         android:text="@string/label_welcome"
+        android:textAlignment="center"
         android:textColor="#422929"
         android:textColorLink="#471F1F"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <TextView
         android:id="@+id/reqCreatAcc"
-        android:layout_width="236dp"
-        android:layout_height="23dp"
+        android:layout_width="180dp"
+        android:layout_height="42dp"
         android:layout_marginBottom="36dp"
-        android:text="Touch to enab;e Create Account"
+        android:text="@string/sinupOption_text"
         android:textAlignment="center"
         android:textSize="16sp"
         android:textStyle="bold"

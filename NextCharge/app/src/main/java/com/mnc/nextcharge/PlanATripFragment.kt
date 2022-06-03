@@ -10,17 +10,16 @@ import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.Spinner
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.mnc.nextcharge.Adapters.cStationListAdapter
 import com.mnc.nextcharge.DataModel.ChargeStationModel
 import com.mnc.nextcharge.DataModel.ChargeStations
-import com.mnc.nextcharge.databinding.FragmentSlideshowBinding
+import com.mnc.nextcharge.databinding.FragmentPlanatripBinding
 import java.util.*
 
-class SlideshowFragment : Fragment(), Observer {
+class PlanATripFragment : Fragment(), Observer {
     // This property is only valid between onCreateView and
     // onDestroyView.
-    private var _binding : FragmentSlideshowBinding? = null
+    private var _binding : FragmentPlanatripBinding? = null
     private val binding get() = _binding!!
     private var csListAdapter : cStationListAdapter? = null
     private var thiscontext : Context? = null
@@ -29,10 +28,8 @@ class SlideshowFragment : Fragment(), Observer {
         container : ViewGroup?,
         savedInstanceState : Bundle?
     ) : View {
-        val slideshowViewModel =
-            ViewModelProvider(this).get(SlideshowViewModel::class.java)
         thiscontext = container?.getContext();
-        _binding = FragmentSlideshowBinding.inflate(inflater, container, false)
+        _binding = FragmentPlanatripBinding.inflate(inflater, container, false)
         val root : View = binding.root
         val spinner : Spinner = binding.myEVEditText              //findViewById(R.id.spinner)
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -46,8 +43,6 @@ class SlideshowFragment : Fragment(), Observer {
             // Apply the adapter to the spinner
             spinner.adapter = adapter
         }
-
-
         return root
     }
 
@@ -60,16 +55,16 @@ class SlideshowFragment : Fragment(), Observer {
             if (validateForm()) {
                 binding.endLocEditText.error = null
                 binding.startLocEditText.error = null
+                binding.statLocTextInput.error = null
+                binding.endLocTextInput.error = null
                 ChargeStationModel.addObserver(this)
-                val csDataList : ListView = binding.cStationRV
+                val csDataList : ListView = binding.cStationLV
                 val csdata : ArrayList<ChargeStations> = ArrayList()
                 csListAdapter =
                     thiscontext?.let { cStationListAdapter(it, R.layout.item_custom_row, csdata) }
                 csDataList.adapter = csListAdapter
             }
         }
-
-
     }
 
     override fun onDestroyView() {
@@ -110,33 +105,34 @@ class SlideshowFragment : Fragment(), Observer {
 
         val startloc = binding.startLocEditText.text.toString()
         if (TextUtils.isEmpty(startloc)) {
-            binding.startLocEditText.error = "Required."
+            binding.startLocEditText.error = "!"
             valid = false
         } else {
-            if (startloc != "Melbourne") {
-                binding.startLocEditText.error = "Fixed Start location - please enter: Melbourne"
-                valid = false
-            } else {
-                binding.startLocEditText.error = null
-            }
+
             binding.startLocEditText.error = null
         }
 
+        if (startloc != "Melbourne") {
+            binding.statLocTextInput.error = "Fixed Start location - please enter: Melbourne"
+            valid = false
+        } else {
+            binding.startLocEditText.error = null
+        }
 
         val endloc = binding.endLocEditText.text.toString()
         if (TextUtils.isEmpty(endloc)) {
-            binding.endLocEditText.error = "Required Field"
+            binding.endLocEditText.error = "!"
             valid = false
         } else {
-            if (endloc != "Sydney") {
-                binding.endLocTextInput.error = "Fixed End location - please enter: Sydney"
-                valid = false
-            } else {
-                binding.endLocEditText.error = null
-            }
+
             binding.endLocEditText.error = null
         }
-
+        if (endloc != "Sydney") {
+            binding.endLocTextInput.error = "Fixed End location - please enter: Sydney"
+            valid = false
+        } else {
+            binding.endLocEditText.error = null
+        }
         return valid
     }
 }
