@@ -1,7 +1,6 @@
 package com.mnc.nextcharge.Adapters
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,13 +42,14 @@ class cStationListAdapter(context : Context, resource: Int, list : ArrayList<Cha
        val cstation : ChargeStations? = if (count > position) getItem(position) else null
        val csName : TextView? = view.findViewById(R.id.csname)
        csName?.text = cstation?.name
-       Log.i(tag,"Change Station Name"+cstation?.name)
+       //Log.i(tag,"Change Station Name"+cstation?.name)
        val csCity : TextView? = view.findViewById(R.id.cscity)
        csCity?.text = cstation?.city
        val csQantity : TextView? = view.findViewById(R.id.csquamtity)
        csQantity?.text = cstation?.chargerQuantity
        val csCapacity : TextView? = view.findViewById(R.id.cscapacity)
        csCapacity?.text = cstation?.chargerCapacity
+
 
    }
 }

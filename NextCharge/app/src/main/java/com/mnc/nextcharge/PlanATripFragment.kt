@@ -92,18 +92,18 @@ class PlanATripFragment : Fragment(), Observer {
 
     override fun onStop() {
         super.onStop()
-        //ChargeStationModel.deleteObserver(this)
+        ChargeStationModel.deleteObserver(this)
     }
 
     override fun onPause() {
         super.onPause()
-        //ChargeStationModel.deleteObserver(this)
+        ChargeStationModel.deleteObserver(this)
     }
 
     private fun validateForm() : Boolean {
         var valid = true
 
-        val startloc = binding.startLocEditText.text.toString()
+        val startloc = binding.startLocEditText.text.toString().trim()
         if (TextUtils.isEmpty(startloc)) {
             binding.startLocEditText.error = "!"
             valid = false
@@ -119,7 +119,7 @@ class PlanATripFragment : Fragment(), Observer {
             binding.startLocEditText.error = null
         }
 
-        val endloc = binding.endLocEditText.text.toString()
+        val endloc = binding.endLocEditText.text.toString().trim()
         if (TextUtils.isEmpty(endloc)) {
             binding.endLocEditText.error = "!"
             valid = false

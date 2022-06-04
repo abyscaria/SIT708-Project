@@ -25,24 +25,22 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_sign_in)
         // Initialize Firebase Auth
+        Log.i(TAG, "on Signin actvity before auth initiallize >>#1 ")
         auth = Firebase.auth
         // [END initialize_auth]
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val currentUser = auth.currentUser
+
         sinorlog = getString(R.string.login_button_text)
         binding.multiButton.visibility = View.VISIBLE
         binding.multiButton.text = getString(R.string.login_button_text)
         binding.loginstatus.text = getString(R.string.prelogin_status)
         binding.reqCreatAcc.visibility = View.VISIBLE
 
-
-        Log.i(TAG, "on Signin actvity before auth initiallize >>#1 ")
-        //Log.i(TAG,"authentication status "+ auth.currentUser)
         binding.multiButton.setOnClickListener {
             val userEmail : String = binding.emailEditText.text.toString()
             val password : String = binding.passwordEditText.text.toString()
-            if(validateForm()) {
+            if (validateForm()) {
                 if (sinorlog == "LOGIN") {
                     Log.i(TAG, "on Signin actvity before auth initiallize >>#2 " + sinorlog)
                     signIn(userEmail, password)
@@ -88,21 +86,22 @@ class SignInActivity : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "createUserWithEmail:success")
                     val user = auth.currentUser
-                    binding.loginstatus.text = "Successfully Created - User Account. Login to continue"
+                    binding.loginstatus.text =
+                        "Successfully Created - User Account. Login to continue"
                     binding.emailEditText.text = null
-                    binding.passwordEditText.text =null
+                    binding.passwordEditText.text = null
                     sinorlog = getString(R.string.login_button_text)
                     binding.multiButton.text = getString(R.string.login_button_text)
                     //updateUI(user)
                 } else {
                     // If sign in fails, display a message to the user.
-                    Log.i(TAG, "createUserWithEmail:failure >> "+task.exception)
+                    Log.i(TAG, "createUserWithEmail:failure >> " + task.exception)
                     Toast.makeText(
                         baseContext, "Create Account Failed....",
                         Toast.LENGTH_SHORT
                     ).show()
-                    val lenex =  task.exception.toString().length
-                    binding.loginstatus.text = task.exception.toString().substring(25,lenex)
+                    val lenex = task.exception.toString().length
+                    binding.loginstatus.text = task.exception.toString().substring(25, lenex)
                     updateUI(null)
                 }
             }
@@ -120,7 +119,7 @@ class SignInActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "signInWithEmail:success >>"+auth.currentUser!!.email)
+                    Log.d(TAG, "signInWithEmail:success >>" + auth.currentUser!!.email)
                     val user = auth.currentUser
                     //updateUI(user)
                     val intent = Intent(this, NextChargeHome::class.java).apply {}
@@ -213,7 +212,7 @@ class SignInActivity : AppCompatActivity() {
             binding.passwordEditText.error = null
         }
 
-        if(sinorlog == getString(R.string.signup_button_text)) {
+        if (sinorlog == getString(R.string.signup_button_text)) {
             if (password.length < 8) {
                 binding.loginstatus.text = getString(R.string.password_len_text)
                 binding.passwordEditText.error = "Error"
