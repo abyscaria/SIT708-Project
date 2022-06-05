@@ -19,8 +19,10 @@ import java.util.*
 class PlanATripFragment : Fragment(), Observer {
     // This property is only valid between onCreateView and
     // onDestroyView.
+    // initializing the fragement view
     private var _binding : FragmentPlanatripBinding? = null
     private val binding get() = _binding!!
+    // Initialize the charge station list adapter
     private var csListAdapter : cStationListAdapter? = null
     private var thiscontext : Context? = null
     override fun onCreateView(
@@ -60,8 +62,9 @@ class PlanATripFragment : Fragment(), Observer {
                 ChargeStationModel.addObserver(this)
                 val csDataList : ListView = binding.cStationLV
                 val csdata : ArrayList<ChargeStations> = ArrayList()
+
                 csListAdapter =
-                    thiscontext?.let { cStationListAdapter(it, R.layout.item_custom_row, csdata) }
+                    thiscontext?.let { cStationListAdapter(it, R.layout.charge_station_list, csdata) }
                 csDataList.adapter = csListAdapter
             }
         }
@@ -76,7 +79,7 @@ class PlanATripFragment : Fragment(), Observer {
         csListAdapter?.clear()
         val data = ChargeStationModel.getData()
         if (data != null) {
-            //csListAdapter?.clear()
+            csListAdapter?.clear()
             csListAdapter?.addAll(data)
             csListAdapter?.notifyDataSetChanged()
         }

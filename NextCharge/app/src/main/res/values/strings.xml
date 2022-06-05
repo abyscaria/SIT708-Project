@@ -121,6 +121,8 @@
     <string name="verify_emailsend">Press Verify Button to send verification email</string>
     <string name="password_len_text">Password must be 8 or more characters long!!</string>
     <string name="nav_mnc_hedertitle">MyNextCharge</string>
+    <string name="label_lname">Last Name</string>
+    <string name="label_fname">First Name</string>
 
 
 </resources>

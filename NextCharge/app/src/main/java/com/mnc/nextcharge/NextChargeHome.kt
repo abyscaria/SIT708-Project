@@ -30,10 +30,10 @@ class NextChargeHome : AppCompatActivity() {
 
         setSupportActionBar(binding.appBarNextChargeHome.toolbar)
 
-       /* binding.appBarNextChargeHome.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }*/
+        /* binding.appBarNextChargeHome.fab.setOnClickListener { view ->
+             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                 .setAction("Action", null).show()
+         }*/
         val drawerLayout : DrawerLayout = binding.drawerLayout
         val navView : NavigationView = binding.navView
 
@@ -44,15 +44,9 @@ class NextChargeHome : AppCompatActivity() {
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_planatrip
             ), drawerLayout
         )
-       val siginuser : String  // findViewById<TextView>(R.id.logedInUser)
-       siginuser = auth.currentUser!!.email.toString()
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-       /*- if(currentUserViewModel.hasNoUserSet()) {
-            Log.d(TAG, "NextChargeHome before calling Login : NCH Activity before calling Login fragment ")
-            navController.navigate(R.id.nextChargeLoginFragment)
-        }*/
     }
 
     override fun onCreateOptionsMenu(menu : Menu) : Boolean {

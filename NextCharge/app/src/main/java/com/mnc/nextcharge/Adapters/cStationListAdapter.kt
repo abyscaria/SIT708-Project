@@ -7,7 +7,12 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.mnc.nextcharge.DataModel.ChargeStations
-import com.mnc.nextcharge.R
+import com.mnc.nextcharge.R as R1
+
+
+/* cStationListAdapter : This adapter deliver data to to Plan a Trip UI and Charge StationList UI
+// This Adapter links the layouts and firebase database to construct the card layout to present the data
+ */
 
 class cStationListAdapter(context : Context, resource: Int, list : ArrayList<ChargeStations>) :ArrayAdapter<ChargeStations>(context,resource,list) {
     private var csResource : Int = 0
@@ -40,14 +45,14 @@ class cStationListAdapter(context : Context, resource: Int, list : ArrayList<Cha
 
    private fun setUI(view: View, position : Int) {
        val cstation : ChargeStations? = if (count > position) getItem(position) else null
-       val csName : TextView? = view.findViewById(R.id.csname)
+       val csName : TextView? = view.findViewById(R1.id.csname)
        csName?.text = cstation?.name
        //Log.i(tag,"Change Station Name"+cstation?.name)
-       val csCity : TextView? = view.findViewById(R.id.cscity)
+       val csCity : TextView? = view.findViewById(R1.id.cscity)
        csCity?.text = cstation?.city
-       val csQantity : TextView? = view.findViewById(R.id.csquamtity)
+       val csQantity : TextView? = view.findViewById(R1.id.csquamtity)
        csQantity?.text = cstation?.chargerQuantity
-       val csCapacity : TextView? = view.findViewById(R.id.cscapacity)
+       val csCapacity : TextView? = view.findViewById(R1.id.cscapacity)
        csCapacity?.text = cstation?.chargerCapacity
 
 
