@@ -1,4 +1,4 @@
-package com.mnc.nextcharge
+package com.mnc.nextcharge.DataModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
