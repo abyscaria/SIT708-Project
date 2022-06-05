@@ -1,65 +1,128 @@
 <resources>
-    <string name="multiautocompletetextview">MultiAutoCompleteTextView</string>
-    <string name="mnc_logo">mnc_logo</string>
-    <string name="title_activity_mnc_trip_map">mnc_trip_map</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="mnc_userid">Enter User ID</string>
-    <string name="mnc_userfname">First Name</string>
-    <string name="mnc_userlname">Last Name</string>
-    <string name="mnc_userpwd">Password</string>
-    <string name="mnc_confirmpwd">Confirm Password</string>
-    <string name="mnc_createuser">CREATE ACCOUNT</string>
-    <string name="settings">Settings</string>
-    <string name="Done">Done</string>
-    <string name="ca_message1">Account Creation Successful</string>
-    <string name="fragment_userid">Fragment userid</string>
-    <!-- Strings related to login -->
 
-    <string name="Trip_plan_menu">Plan a Trip</string>
-    <string name="add_ev">Add Your EV</string>
-    <string name="ChargeHist">Charge History</string>
-    <string name="trip_hist">Trip History</string>
-    <string name="mnclogout">Logout</string>
-    <string name="chargeStProf">Charge Station Profile</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="title_activity_mnc_home_view">mncHomeView</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="title_activity_login_mnc">loginMNC</string>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
 
-    <string name="app_name">MyNextCharge</string>
-    <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <!-- Activity with no Title -->
+    <style name="ThemeOverlay.MyNoTitleActivity" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="title_activity_mnc_login">MncLoginActivity</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
+    <!-- Dark Buttons -->
+    <style name="ThemeOverlay.MyDarkButton" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="colorButtonNormal">@color/grey_500</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:layout_marginRight">4dp</item>
+        <item name="android:layout_marginLeft">4dp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <!-- Light EditTexts -->
+    <style name="ThemeOverlay.MyLightEditText" parent="ThemeOverlay.AppCompat.Dark" />
+
+    <style name="ThemeOverlay.MyTextDetail" parent="AppTheme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fadeScrollbars">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:maxLines">5</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="ThemeOverlay.FirebaseIcon" parent="AppTheme">
+        <item name="android:layout_marginTop">@dimen/icon_top_margin</item>
+        <item name="android:layout_marginBottom">@dimen/icon_bottom_margin</item>
+    </style>
+
+    <style name="ThemeOverlay.MyTitleText" parent="AppTheme">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">36sp</item>
+    </style>
+
+    <style name="Widget.Theme.NextCharge.ButtonBar.Fullscreen" parent="">
+        <item name="android:background">@color/black_overlay</item>
+        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
+    </style>
+
+    <string name="edit_message" />
+    <string name="button_send">SEND</string>
+    <string name="menu_plantrip">Plan a Trip</string>
+    <string name="menu_chargestaton">Charge Station Details</string>
+    <string name="menu_addev">Add Your EV</string>
+    <string name="menu_triphist">Trip History</string>
+    <string name="menu_chargehist">Charge History</string>
+    <string name="hintlable">Label</string>
+
+    <string name="starDLabel">Start Location</string>
+    <string name="endDLabel">End Location</string>
+    <string name="travelD">Travel Date DD/MM/YYYY</string>
+    <string name="EvSelector">EV Selected</string>
+
+    <string-array name="ChargingStations">
+        <item> WagaWaga </item>
+        <item> Seymore </item>
+        <item> Wollert</item>
+        <item> Craigiburn</item>
+    </string-array>
+
+    <string-array name="EVehicles">
+        <item> Select your EV </item>
+        <item>Tesla Model 3</item>
+        <item>Tesla Model Y</item>
+        <item>BMW Etron</item>
+    </string-array>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="create_account">Create Account</string>
-    <string name="title_activity_next_charge_home">nextChargeHome</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
+    <string name="logout">Logout</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="breakfast_notification_channel_id" />
-    <string name="message_subscribed" />
-    <string name="message_subscribe_failed" />
+
+    <string name="label_name">Name</string>
+    <string name="label_address">Address</string>
+    <string name="label_city">City</string>
+    <string name="label_state">State</string>
+    <string name="label_zip">Post Code</string>
+    <string name="label_save">Save</string>
+    <string name="error_string" />
+    <string name="label_startLoc">Start Location</string>
+    <string name="label_endLoc">End Location</string>
+    <string name="label_travelDate">Travel Date</string>
+    <string name="label_myEV">EV Selected</string>
+    <string name="label_find">Find</string>
+    <string name="csame_label">Charging Station</string>
+    <string name="cscapacity_label">Charger Capacity</string>
+    <string name="csccity_label">City</string>
+    <string name="csquantity_label">No of Charges</string>
+    <string name="csavailable_label">Available</string>
+
+    <!-- Home map string resources -->
+    <string name="title_activity_maps">Current Place Details</string>
+    <string name="default_info_title">Default Location</string>
+    <string name="default_info_snippet">No places found, because location permission is disabled.</string>
+    <string name="option_get_place">Get place</string>
+    <string name="pick_place">Choose a place</string>
+    <string name="label_email">Enter User ID</string>
+    <string name="label_pwd">Enter Password</string>
+    <string name="login_button_text">LOGIN</string>
+    <string name="prelogin_status">Sign-up or Login to Continue…!!</string>
+    <string name="label_welcome">Welcome to MyNextCharge</string>
+    <string name="login_failure">Login failed check your credentials or Create account</string>
+    <string name="signup_button_text">"CREATE ACCOUNT"</string>
+    <string name="sinupOption_text">Touch here for Sign-Up</string>
+    <string name="verify_button_text">VERIFY EMAIL</string>
+    <string name="verify_emailsend">Press Verify Button to send verification email</string>
+    <string name="password_len_text">Password must be 8 or more characters long!!</string>
+    <string name="nav_mnc_hedertitle">MyNextCharge</string>
+    <string name="label_lname">Last Name</string>
+    <string name="label_fname">First Name</string>
+
+
 </resources>

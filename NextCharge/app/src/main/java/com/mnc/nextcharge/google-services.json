@@ -10,6 +10,35 @@
       "client_info": {
         "mobilesdk_app_id": "1:406327326545:android:ff207276f3081340794570",
         "android_client_info": {
+          "package_name": "com.mnc.mynextcharge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "406327326545-qlbkfq08n7rlvs7p5mjlp9jt76pgnrg4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDha44l8xxHY10iPxDFKO2QNQ_gHfhOqhc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "406327326545-qlbkfq08n7rlvs7p5mjlp9jt76pgnrg4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:406327326545:android:8126315f1349f16c794570",
+        "android_client_info": {
           "package_name": "com.mnc.nextcharge"
         }
       },

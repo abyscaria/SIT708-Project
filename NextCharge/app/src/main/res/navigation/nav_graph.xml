@@ -1,41 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
-    app:startDestination="@id/mncLoginFrag">
+    android:id="@+id/nav_home1">
 
-    <fragment
-        android:id="@+id/mncLoginFrag"
-        android:name="com.mnc.nextcharge.ui.login.mncLoginFrag"
-        android:label="fragment_mnc_login"
-        tools:layout="@layout/fragment_mnc_login" >
-        <action
-            android:id="@+id/action_mncLoginFrag_to_userAccCreateFragment2"
-            app:destination="@id/userAccCreateFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/userAccCreateFragment"
-        android:name="com.mnc.nextcharge.userAccCreateFragment"
-        android:label="fragment_user_acc_create"
-        tools:layout="@layout/fragment_user_acc_create" >
-        <action
-            android:id="@+id/action_userAccCreateFragment_to_mncLoginFrag"
-            app:destination="@id/mncLoginFrag" />
-    </fragment>
-    <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.mnc.nextcharge.ui.home.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
-    <fragment
-        android:id="@+id/galleryFragment"
-        android:name="com.mnc.nextcharge.ui.gallery.GalleryFragment"
-        android:label="fragment_gallery"
-        tools:layout="@layout/fragment_gallery" />
-    <fragment
-        android:id="@+id/slideshowFragment"
-        android:name="com.mnc.nextcharge.ui.slideshow.SlideshowFragment"
-        android:label="fragment_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
 </navigation>
